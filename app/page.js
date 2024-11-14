@@ -11,7 +11,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [qty, Setqty] = useState(1);
-  // let this url are coming from back-end and we don't know how many images are there
+  // let this url are coming from back-end and we dont know how many images are there
   const { imageURL } = productData;
 
   const dispatch = useDispatch();
@@ -42,8 +42,8 @@ export default function Home() {
           </span>
           <p className="text-[#909192]">
             These low-profile sneakers are your perfect casual wear companion.
-            Featuring a durable rubber outer sole, they'll withstand everything
-            the weather can offer.
+            Featuring a durable rubber outer sole, they will withstand
+            everything the weather can offer.
           </p>
         </div>
         <div className="price-section mt-5 flex items-center justify-between">

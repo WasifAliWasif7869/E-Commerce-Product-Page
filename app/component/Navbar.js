@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const product = useSelector((state) => state.cart);
-  const quantity = product[0].quantity;
-
+  const quantity = product[0]?.quantity;
   return (
     <nav>
       <header className="container mx-auto flex min-h-16 w-[90vw] items-center justify-between gap-2 py-2 pb-5 pt-4">
@@ -21,7 +20,7 @@ const Navbar = () => {
           <span className="relative">
             <img src="/icon-cart.svg" alt="" />
             <div className="currect-cart absolute -top-2 right-0 rounded-lg bg-[#fd8324] p-[1px] px-[5px] text-[10px] text-white">
-              {product.length ? quantity : 0}
+              {product.length && quantity ? quantity : 0}
             </div>
           </span>
           <span>
