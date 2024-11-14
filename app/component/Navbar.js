@@ -1,21 +1,42 @@
 "use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const Navbar = () => {
   const product = useSelector((state) => state.cart);
   const quantity = product[0]?.quantity;
   return (
-    <nav>
-      <header className="container mx-auto flex min-h-16 w-[90vw] items-center justify-between gap-2 py-2 pb-5 pt-4">
-        <div className="ham-logo flex items-center gap-4">
-          <div className="hamburger space-y-0.5">
+    <nav className="h-[80px] shadow-lg md:mb-2">
+      <header className="container mx-auto my-2 mb-5 flex min-h-16 w-[90vw] items-center justify-between gap-2">
+        <div className="ham-logo-navigation flex items-center gap-4">
+          <div className="hamburger space-y-0.5 md:hidden">
             <img src="/icon-menu.svg" alt="" />
           </div>
           <div className="logo-name">
             <img src="/logo.svg" alt="logo" className="w-36" />
           </div>
+          <div className="navigation hidden md:block">
+            <ul className="flex h-[10vh] items-center justify-center gap-4 text-center">
+              <li className="h-full cursor-pointer content-center border-[#fe7b1b] text-[#75777c] hover:border-b-4 hover:text-[#2e2e30]">
+                <Link href="/">Collections</Link>
+              </li>
+              <li className="h-full cursor-pointer content-center border-[#fe7b1b] text-[#75777c] hover:border-b-4 hover:text-[#2e2e30]">
+                Men
+              </li>
+              <li className="h-full cursor-pointer content-center border-[#fe7b1b] text-[#75777c] hover:border-b-4 hover:text-[#2e2e30]">
+                Women
+              </li>
+              <li className="h-full cursor-pointer content-center border-[#fe7b1b] text-[#75777c] hover:border-b-4 hover:text-[#2e2e30]">
+                About
+              </li>
+              <li className="h-full cursor-pointer content-center border-[#fe7b1b] text-[#75777c] hover:border-b-4 hover:text-[#2e2e30]">
+                Contact
+              </li>
+            </ul>
+          </div>
         </div>
+
         <div className="cart-profile flex items-center gap-4">
           <span className="relative">
             <img src="/icon-cart.svg" alt="" />
@@ -23,9 +44,9 @@ const Navbar = () => {
               {product.length && quantity ? quantity : 0}
             </div>
           </span>
-          <span>
+          <span className="rounded-full hover:outline-2 hover:outline p-0.5 hover:outline-[#fe7b1b]">
             <Avatar>
-              <AvatarImage src="/image-avatar.png" />
+              <AvatarImage src="/image-avatar.png" className="cursor-pointer" />
               <AvatarFallback>logo</AvatarFallback>
             </Avatar>
           </span>
