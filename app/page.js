@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/Slices/cartSlice";
@@ -17,7 +16,7 @@ export default function Home() {
   return (
     <main className="md:container md:mx-auto md:mt-20 md:flex md:w-[90vw]">
       <div className="first">
-        <div className="image-container h-[40vh] md:w-[40vw] ">
+        <div className="image-container h-[40vh] md:w-[40vw]">
           <ImageSlider images={productData.imageURL} />
         </div>
       </div>
@@ -35,7 +34,7 @@ export default function Home() {
             </p>
           </div>
           <div className="price-section mt-5 flex items-center justify-between md:flex-col md:items-start md:gap-2">
-            <span className="price flex items-center space-x-5 ">
+            <span className="price flex items-center space-x-5">
               <span className="text-2xl font-bold text-[#16171a]">$125.00</span>
               <span className="rounded-lg bg-[#1e1f25] px-2 py-1 text-sm font-bold text-white">
                 50%
@@ -46,8 +45,8 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="quantity m-5 w-[90vw] md:w-[40vw] md:flex md:mt-16 md:gap-4">
-          <div className="plus-minus-qty mb-8 flex items-center justify-around md:w-[12vw] md:min-h-12">
+        <section className="quantity m-5 w-[90vw] md:mt-16 md:flex md:w-[40vw] md:gap-4">
+          <div className="plus-minus-qty mb-8 flex items-center justify-around md:min-h-12 md:w-[12vw]">
             <button
               disabled={qty <= 0}
               className={`minus cursor-pointer rounded-lg p-3 disabled:pointer-events-none`}
