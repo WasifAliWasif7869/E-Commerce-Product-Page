@@ -14,7 +14,7 @@ const Navbar = () => {
             <img src="/icon-menu.svg" alt="" />
           </div>
           <div className="logo-name">
-            <img src="/logo.svg" alt="logo" className="w-36" />
+            <Link href="/"><img src="/logo.svg" alt="logo" className="w-36" /></Link>
           </div>
           <div className="navigation hidden md:block">
             <ul className="flex h-[10vh] items-center justify-center gap-4 text-center">

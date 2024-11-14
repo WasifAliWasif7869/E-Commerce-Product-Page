@@ -23,7 +23,7 @@ export default function Home() {
       <div className="second mt-0 md:mt-16">
         <section className="m-5 w-[90vw] md:w-[40vw]">
           <div className="text flex flex-col gap-3">
-            <span className="text-sm text-[#8d8d90]">SNEAKPER COMPANY</span>
+            <span className="text-sm text-[#8d8d90]">SNEAKER COMPANY</span>
             <span className="font-['Kumbh_Sans'] text-3xl font-bold text-[#1a1d22]">
               Fall Limited Edition Sneakers
             </span>
