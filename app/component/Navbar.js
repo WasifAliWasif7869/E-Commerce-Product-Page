@@ -7,9 +7,9 @@ const Navbar = () => {
   const product = useSelector((state) => state.cart);
   const quantity = product[0]?.quantity;
   return (
-    <nav className="h-[80px] shadow-lg md:mb-2">
-      <header className="container mx-auto my-2 mb-5 flex min-h-16 w-[90vw] items-center justify-between gap-2">
-        <div className="ham-logo-navigation flex items-center gap-4">
+    <nav className="shadow-lg min-h-16">
+      <header className="container mx-auto  flex  w-[80vw] items-center justify-between gap-2">
+        <div className="ham-logo-navigation flex items-center gap-4 min-h-16">
           <div className="hamburger space-y-0.5 md:hidden">
             <img src="/icon-menu.svg" alt="" />
           </div>

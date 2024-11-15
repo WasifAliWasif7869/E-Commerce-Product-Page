@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main className="md:container md:mx-auto md:mt-20 md:flex md:w-[90vw]">
       <div className="first">
-        <div className="image-container h-[40vh] md:w-[40vw]">
+        <div className="image-container object-cover h-[40vh] md:h-[400px] md:w-[40vw]">
           <ImageSlider images={productData.imageURL} />
         </div>
       </div>
