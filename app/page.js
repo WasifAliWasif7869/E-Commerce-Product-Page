@@ -4,19 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/Slices/cartSlice";
 import { useState } from "react";
 import ImageSlider from "./component/ImageSlider";
-
 // let this prouctDate come from api
 import productData from "@/productData";
 
 export default function Home() {
   const [qty, Setqty] = useState(1);
   const dispatch = useDispatch();
-  const [product] = useSelector((state) => state.cart);
 
   return (
     <main className="md:container md:mx-auto md:mt-20 md:flex md:w-[90vw]">
       <div className="image-slider">
-        <div className="image-container object-cover h-[40vh] md:h-[400px] md:w-[40vw]">
+        <div className="image-container relative h-[40vh] md:h-[300px] md:w-[40vw]">
           <ImageSlider images={productData.imageURL} />
         </div>
       </div>
@@ -46,7 +44,7 @@ export default function Home() {
           </div>
         </section>
         <section className="quantity m-5 w-[90vw] md:mt-16 md:flex md:w-[40vw] md:gap-4">
-          <div className="plus-minus-qty mb-8 flex items-center py-3 justify-around md:min-h-12 md:w-[12vw] bg-[#f7f8fd]">
+          <div className="plus-minus-qty mb-8 flex items-center justify-around bg-[#f7f8fd] py-3 md:min-h-12 md:w-[12vw]">
             <button
               disabled={qty <= 0}
               className={`minus cursor-pointer rounded-lg p-3 disabled:pointer-events-none`}
