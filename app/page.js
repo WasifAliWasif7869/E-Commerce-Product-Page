@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <main className="md:container md:mx-auto md:mt-20 md:flex md:w-[90vw]">
-      <div className="first">
+      <div className="image-slider">
         <div className="image-container object-cover h-[40vh] md:h-[400px] md:w-[40vw]">
           <ImageSlider images={productData.imageURL} />
         </div>
@@ -46,7 +46,7 @@ export default function Home() {
           </div>
         </section>
         <section className="quantity m-5 w-[90vw] md:mt-16 md:flex md:w-[40vw] md:gap-4">
-          <div className="plus-minus-qty mb-8 flex items-center justify-around md:min-h-12 md:w-[12vw]">
+          <div className="plus-minus-qty mb-8 flex items-center py-3 justify-around md:min-h-12 md:w-[12vw] bg-[#f7f8fd]">
             <button
               disabled={qty <= 0}
               className={`minus cursor-pointer rounded-lg p-3 disabled:pointer-events-none`}

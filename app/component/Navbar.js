@@ -2,13 +2,25 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
 
 const Navbar = () => {
   const product = useSelector((state) => state.cart);
   const quantity = product[0]?.quantity;
+  const showCart = () => {
+    console.log("code to show cart")
+  }
   return (
     <nav className="shadow-lg min-h-16">
-      <header className="container mx-auto  flex  w-[80vw] items-center justify-between gap-2">
+      <header className="container mx-auto flex w-[80vw] items-center justify-between gap-2">
         <div className="ham-logo-navigation flex items-center gap-4 min-h-16">
           <div className="hamburger space-y-0.5 md:hidden">
             <img src="/icon-menu.svg" alt="" />
@@ -38,12 +50,27 @@ const Navbar = () => {
         </div>
 
         <div className="cart-profile flex items-center gap-4">
-          <span className="relative">
+          <span className="relative cursor-pointer" onClick={showCart}>
             <img src="/icon-cart.svg" alt="" />
             <div className="currect-cart absolute -top-2 right-0 rounded-lg bg-[#fd8324] p-[1px] px-[5px] text-[10px] text-white">
               {product.length && quantity ? quantity : 0}
             </div>
           </span>
+          <div className="card absolute">
+            <Card className="absolute top-7 z-30 md:w-[300px] md:-left-36 sm:-left-48 w-[80vw] -left-60">
+              <CardHeader>
+                <CardTitle>Card Title</CardTitle>
+                <CardDescription>Card Description</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Card Content</p>
+              </CardContent>
+              <CardFooter>
+                <p>Card Footer</p>
+              </CardFooter>
+            </Card>
+
+          </div>
           <span className="rounded-full hover:outline-2 hover:outline p-0.5 hover:outline-[#fe7b1b]">
             <Avatar>
               <AvatarImage src="/image-avatar.png" className="cursor-pointer" />
