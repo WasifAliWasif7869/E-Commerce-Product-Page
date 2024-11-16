@@ -26,33 +26,38 @@ const Navbar = () => {
       <header className="container mx-auto flex w-[90vw] items-center justify-between gap-2 md:w-[80vw]">
         <div className="ham-logo-navigation flex min-h-16 items-center gap-4">
           <div
-            className="hamburger space-y-0.5 md:hidden"
+            className="hamburger z-50 space-y-0.5 md:hidden"
             onClick={() => {
               setShowDrawer(!showDrawer);
             }}
           >
-            <img src="/icon-menu.svg" alt="" />
+            <img
+              src={showDrawer ? "/icon-close.svg" : "/icon-menu.svg"}
+              alt=""
+            />
           </div>
           <div className="logo-name">
             <Link href="/">
-              <img src="/logo.svg" alt="logo" className="w-36" />
+              <img src="/logo.svg" alt="logo" className="w-44" />
             </Link>
           </div>
-          <div className="navigation hidden md:block">
-            <ul className="flex h-[10vh] items-center justify-center gap-4 text-center">
-              <li className="h-full cursor-pointer content-center border-[#fe7b1b] text-[#75777c] hover:border-b-4 hover:text-[#2e2e30]">
+          <div className="navigation md:block">
+            <ul
+              className={`${showDrawer ? "translate-x-0" : "-translate-x-full"} absolute inset-0 top-0 z-30 flex h-screen w-[60vw] flex-col gap-2 bg-white pt-20 transition-all duration-300 md:static md:h-[10vh] md:translate-x-0 md:flex-row md:items-center md:gap-0 md:pt-0 md:text-center`}
+            >
+              <li className="cursor-pointer content-center border-[#fe7b1b] px-4 py-2 text-lg font-bold text-[#26272b] hover:text-[#2e2e30] md:h-full md:font-normal md:text-[#75777c] md:hover:border-b-4">
                 <Link href="/">Collections</Link>
               </li>
-              <li className="h-full cursor-pointer content-center border-[#fe7b1b] text-[#75777c] hover:border-b-4 hover:text-[#2e2e30]">
+              <li className="cursor-pointer content-center border-[#fe7b1b] px-4 py-2 text-lg font-bold text-[#26272b] hover:text-[#2e2e30] md:h-full md:font-normal md:text-[#75777c] md:hover:border-b-4">
                 Men
               </li>
-              <li className="h-full cursor-pointer content-center border-[#fe7b1b] text-[#75777c] hover:border-b-4 hover:text-[#2e2e30]">
+              <li className="cursor-pointer content-center border-[#fe7b1b] px-4 py-2 text-lg font-bold text-[#26272b] hover:text-[#2e2e30] md:h-full md:font-normal md:text-[#75777c] md:hover:border-b-4">
                 Women
               </li>
-              <li className="h-full cursor-pointer content-center border-[#fe7b1b] text-[#75777c] hover:border-b-4 hover:text-[#2e2e30]">
+              <li className="cursor-pointer content-center border-[#fe7b1b] px-4 py-2 text-lg font-bold text-[#26272b] hover:text-[#2e2e30] md:h-full md:font-normal md:text-[#75777c] md:hover:border-b-4">
                 About
               </li>
-              <li className="h-full cursor-pointer content-center border-[#fe7b1b] text-[#75777c] hover:border-b-4 hover:text-[#2e2e30]">
+              <li className="cursor-pointer content-center border-[#fe7b1b] px-4 py-2 text-lg font-bold text-[#26272b] hover:text-[#2e2e30] md:h-full md:font-normal md:text-[#75777c] md:hover:border-b-4">
                 Contact
               </li>
             </ul>
@@ -74,8 +79,8 @@ const Navbar = () => {
             </div>
             {showCart && (
               <Card className="absolute -right-20 top-5 z-30 min-h-48 w-[90vw] pb-0 text-[#6a6d72] shadow-xl sm:right-0 sm:w-96">
-                <CardHeader>
-                  <CardTitle className="pb-2 shadow-lg">Cart</CardTitle>
+                <CardHeader className="pb-2 shadow-lg">
+                  <CardTitle className="">Cart</CardTitle>
                 </CardHeader>
                 {product ? (
                   <div>
@@ -98,7 +103,7 @@ const Navbar = () => {
                           </span>
                         </div>
                         <span
-                          className="delete cursor-pointer w-[7%] self-center md:w-[5%]"
+                          className="delete w-[7%] cursor-pointer self-center md:w-[5%]"
                           onClick={() =>
                             dispatch(removeFromCart(product.productID))
                           }
