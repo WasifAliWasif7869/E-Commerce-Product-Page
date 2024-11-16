@@ -17,7 +17,6 @@ const LargeSlider = ({ images }) => {
   };
 
   const handleImageChange = (e) => {
-    console.log(e.target);
     document
       .querySelectorAll(".selected")
       .forEach((ele) => ele.classList.remove("selected"));
@@ -26,6 +25,7 @@ const LargeSlider = ({ images }) => {
   };
   return (
     <div className="hidden gap-4 md:flex">
+        {/* upper slider show when image is clicked */}
       <div className="absolute inset-0 left-1/2 top-1/2 z-30 flex h-[50vh] w-[40vw] -translate-x-1/2 -translate-y-1/2 flex-col gap-5 overflow-hidden">
         <div
           className={`relative flex h-full w-full transition-transform duration-500`}
@@ -56,6 +56,7 @@ const LargeSlider = ({ images }) => {
           <img src="/icon-next.svg" alt="" className="text-yellow-300" />
         </div>
       </div>
+      {/* lower mini pic sider shows when image is clicked */}
       <div className="downslider absolute bottom-0 left-1/2 z-30 mx-auto w-[50vw] -translate-x-1/2 -translate-y-1/2 md:block">
         <Carousel>
           <CarouselContent>

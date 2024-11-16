@@ -25,18 +25,21 @@ const Navbar = () => {
 
   const handleClose = (e) => {
     e.stopPropagation();
-    if(e.target.alt == "close") return
-    if (menuRef && !menuRef.current.contains(e.target) ) {
+    // check if the drawer is open
+    if (e.target.alt == "close") return;
+    if (menuRef && !menuRef.current.contains(e.target)) {
       setShowDrawer(false);
     }
+    // check if the cart is open
     if (cartRef.current && !cartRef.current.contains(e.target)) {
       setshowCart(false);
     }
   };
 
   useEffect(() => {
+    //closing cart and drawer when clicked outside
     document.addEventListener("mousedown", handleClose);
-
+    // cleaning up if unmount
     return () => {
       document.removeEventListener("mousedown", handleClose);
     };
@@ -61,6 +64,7 @@ const Navbar = () => {
               <img src="/logo.svg" alt="logo" className="w-44" />
             </Link>
           </div>
+          {/* navigation bar starts here */}
           <div className="navigation md:block">
             <ul
               ref={menuRef}
@@ -84,7 +88,7 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-
+        {/* cart-icon and profile pics shows here */}
         <div className="cart-profile flex items-center gap-4">
           <span className="relative">
             <div
@@ -98,6 +102,7 @@ const Navbar = () => {
                 {product && product.quantity ? product.quantity : 0}
               </div>
             </div>
+            {/* actual cart */}
             <div ref={cartRef}>
               {showCart && (
                 <Card className="absolute -right-20 top-5 z-30 min-h-56 w-[90vw] pb-0 text-[#6a6d72] shadow-xl sm:right-0 sm:w-96">
@@ -149,7 +154,6 @@ const Navbar = () => {
               )}
             </div>
           </span>
-
           <span className="rounded-full p-0.5 hover:outline hover:outline-2 hover:outline-[#fe7b1b]">
             <Avatar>
               <AvatarImage src="/image-avatar.png" className="cursor-pointer" />
