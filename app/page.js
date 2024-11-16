@@ -13,78 +13,73 @@ export default function Home() {
   const dispatch = useDispatch();
 
   return (
-    <main className="md:container md:mx-auto md:mt-20 md:flex md:w-[90vw]">
-      <div className="image-slider">
-        <div className="image-container relative h-[40vh] md:h-[300px] md:w-[40vw]">
-          <ImageSlider images={productData.imageURL} />
+      <main className="md:container md:mx-auto md:mt-20 md:flex md:w-[90vw]">
+        <div className="image-slider">
+          <div className="image-container h-[40vh] md:h-[300px] md:w-[40vw]">
+            <ImageSlider images={productData.imageURL} />
+          </div>
         </div>
-      </div>
-      <div className="second mt-0 md:mt-16">
-        <section className="m-5 w-[90vw] md:w-[40vw]">
-          <div className="text flex flex-col gap-3">
-            <span className="text-sm text-[#8d8d90]">SNEAKER COMPANY</span>
-            <span className="font-['Kumbh_Sans'] text-3xl font-bold text-[#1a1d22]">
-              {productData.name}
-            </span>
-            <p className="text-[#909192]">
-              {productData.description}
-            </p>
-          </div>
-          <div className="price-section mt-16 flex items-center justify-between md:flex-col md:items-start md:gap-2">
-            <span className="price flex items-center space-x-5">
-              <span className="text-2xl font-bold text-[#16171a]">
-                $125.00
+        <div className="second mt-0 md:mt-16">
+          <section className="m-5 w-[90vw] md:w-[40vw]">
+            <div className="text flex flex-col gap-3">
+              <span className="text-sm text-[#8d8d90]">SNEAKER COMPANY</span>
+              <span className="font-['Kumbh_Sans'] text-3xl font-bold text-[#1a1d22]">
+                {productData.name}
               </span>
-              <span className="rounded-lg bg-[#1e1f25] px-2 py-1 text-sm font-bold text-white">
-                50%
-              </span>
-            </span>
-            <div className="actual-price text-sm text-[#767980] line-through">
-              $250.00
+              <p className="text-[#909192]">{productData.description}</p>
             </div>
-          </div>
-        </section>
-        <section className="quantity m-5 w-[90vw] md:mt-16 md:flex md:w-[40vw] md:gap-4">
-          <div className="plus-minus-qty mb-8 flex items-center justify-around bg-[#f7f8fd] py-3 md:min-h-12 md:w-[12vw]">
-            <button
-              disabled={qty <= 0}
-              className={`minus cursor-pointer rounded-lg p-3 disabled:pointer-events-none`}
+            <div className="price-section mt-16 flex items-center justify-between md:flex-col md:items-start md:gap-2">
+              <span className="price flex items-center space-x-5">
+                <span className="text-2xl font-bold text-[#16171a]">
+                  $125.00
+                </span>
+                <span className="rounded-lg bg-[#1e1f25] px-2 py-1 text-sm font-bold text-white">
+                  50%
+                </span>
+              </span>
+              <div className="actual-price text-sm text-[#767980] line-through">
+                $250.00
+              </div>
+            </div>
+          </section>
+          <section className="quantity m-5 w-[90vw] md:mt-16 md:flex md:w-[40vw] md:gap-4">
+            <div className="plus-minus-qty mb-8 flex items-center justify-around bg-[#f7f8fd] py-3 md:min-h-12 md:w-[12vw]">
+              <button
+                disabled={qty <= 0}
+                className={`minus cursor-pointer rounded-lg p-3 disabled:pointer-events-none`}
+                onClick={() => {
+                  Setqty(qty - 1);
+                }}
+              >
+                <img src="/icon-minus.svg" alt="" />
+              </button>
+              <span className="w-36 text-center">{qty}</span>
+              <button
+                className={`plus cursor-pointer rounded-lg p-3 disabled:pointer-events-none`}
+                onClick={() => {
+                  Setqty(qty + 1);
+                }}
+              >
+                <img src="/icon-plus.svg" alt="" />
+              </button>
+            </div>
+            <div
+              className="add-to-cart-button md:w-[20vw]"
               onClick={() => {
-                Setqty(qty - 1);
+                dispatch(addToCart({ ...productData, quantity: qty }));
               }}
             >
-              <img src="/icon-minus.svg" alt="" />
-            </button>
-            <span className="w-36 text-center">{qty}</span>
-            <button
-              className={`plus cursor-pointer rounded-lg p-3 disabled:pointer-events-none`}
-              onClick={() => {
-                Setqty(qty + 1);
-              }}
-            >
-              <img src="/icon-plus.svg" alt="" />
-            </button>
-          </div>
-          <div
-            className="add-to-cart-button md:w-[20vw]"
-            onClick={() => {
-              dispatch(addToCart({ ...productData, quantity: qty }));
-            }}
-          >
-            <Button
-              disabled={qty <= 0}
-              className="mr-2 w-full bg-[#ff7d1b] py-6 text-lg font-bold text-[#531d00] outline-none6"
-            >
-              <img
-                src="/icon-cart.svg"
-                alt="cart-icon"
-                className="w-5"
-              />
-              Add to Cart
-            </Button>
-          </div>
-        </section>
-      </div>
-    </main>
+              <Button
+                disabled={qty <= 0}
+                className="outline-none6 mr-2 w-full bg-[#ff7d1b] py-6 text-lg font-bold text-[#531d00]"
+              >
+                <img src="/icon-cart.svg" alt="cart-icon" className="w-5" />
+                Add to Cart
+              </Button>
+            </div>
+          </section>
+        </div>
+      </main>
+      
   );
 }
