@@ -85,7 +85,7 @@ const ImageSlider = ({ images }) => {
         <>
           <LargeSlider images={images} />
           <div
-            className="absolute right-0 top-0 h-screen w-screen bg-black opacity-80"
+            className="fixed right-0 top-0 h-screen w-screen bg-black opacity-80"
             onClick={() => setOpenSider(false)}
           ></div>
         </>

@@ -57,7 +57,7 @@ const LargeSlider = ({ images }) => {
         </div>
       </div>
       {/* lower mini pic sider shows when image is clicked */}
-      <div className="downslider absolute bottom-0 left-1/2 z-30 mx-auto w-[50vw] -translate-x-1/2 -translate-y-1/2 md:block">
+      <div className="downslider absolute -bottom-16 left-1/2 z-30 mx-auto w-[50vw] -translate-x-1/2 -translate-y-1/2 md:block">
         <Carousel>
           <CarouselContent>
             {images.map((url, index) => {
