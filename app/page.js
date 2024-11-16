@@ -26,11 +26,15 @@ export default function Home() {
             <span className="font-['Kumbh_Sans'] text-3xl font-bold text-[#1a1d22]">
               {productData.name}
             </span>
-            <p className="text-[#909192]">{productData.description}</p>
+            <p className="text-[#909192]">
+              {productData.description}
+            </p>
           </div>
-          <div className="price-section mt-5 flex items-center justify-between md:flex-col md:items-start md:gap-2">
+          <div className="price-section mt-16 flex items-center justify-between md:flex-col md:items-start md:gap-2">
             <span className="price flex items-center space-x-5">
-              <span className="text-2xl font-bold text-[#16171a]">$125.00</span>
+              <span className="text-2xl font-bold text-[#16171a]">
+                $125.00
+              </span>
               <span className="rounded-lg bg-[#1e1f25] px-2 py-1 text-sm font-bold text-white">
                 50%
               </span>
@@ -69,9 +73,13 @@ export default function Home() {
           >
             <Button
               disabled={qty <= 0}
-              className="mr-2 w-full bg-[#ff7d1b] py-6 text-lg font-bold text-[#531d00] outline-none"
+              className="mr-2 w-full bg-[#ff7d1b] py-6 text-lg font-bold text-[#531d00] outline-none6"
             >
-              <img src="/icon-cart.svg" alt="cart-icon" className="w-5" />
+              <img
+                src="/icon-cart.svg"
+                alt="cart-icon"
+                className="w-5"
+              />
               Add to Cart
             </Button>
           </div>

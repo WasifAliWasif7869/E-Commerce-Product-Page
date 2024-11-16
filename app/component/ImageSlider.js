@@ -18,7 +18,6 @@ const ImageSlider = ({ images }) => {
     setcurrentImage(currentImage == images.length - 1 ? 0 : currentImage + 1);
   };
   const handleImageChange = (e) => {
-    // imageRef.current.src = e.target.src;
     setcurrentImage(e.target.alt);
     document
       .querySelectorAll(".selected")
@@ -37,7 +36,7 @@ const ImageSlider = ({ images }) => {
           <div className="min-w-[100vw] md:min-w-[100%]" key={index}>
             <img
               src={url}
-              className="h-[300px] w-full object-fill object-center md:h-[90%] md:w-[70vw] md:rounded-lg"
+              className="h-[300px] w-full object-fill object-center md:h-[90%] md:w-[50vw] md:rounded-3xl"
             />
           </div>
         ))}

@@ -24,7 +24,9 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const handleClose = (e) => {
-    if (menuRef && !menuRef.current.contains(e.target)) {
+    e.stopPropagation();
+    if(e.target.alt == "close") return
+    if (menuRef && !menuRef.current.contains(e.target) ) {
       setShowDrawer(false);
     }
     if (cartRef.current && !cartRef.current.contains(e.target)) {
@@ -44,16 +46,14 @@ const Navbar = () => {
     <nav className="min-h-16 shadow-lg">
       <header className="container mx-auto flex w-[90vw] items-center justify-between gap-2 md:w-[80vw]">
         <div className="ham-logo-navigation flex min-h-16 items-center gap-4">
-          <div
-            className="hamburger z-50 space-y-0.5 md:hidden"
-            onClick={() => {
-              setShowDrawer(!showDrawer);
-              setshowCart(false);
-            }}
-          >
+          <div className="hamburger z-50 space-y-0.5 md:hidden">
             <img
+              onClick={() => {
+                setShowDrawer(!showDrawer);
+                setshowCart(false);
+              }}
               src={showDrawer ? "/icon-close.svg" : "/icon-menu.svg"}
-              alt=""
+              alt={showDrawer ? "close" : "open"}
             />
           </div>
           <div className="logo-name">
