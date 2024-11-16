@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/store/Slices/cartSlice";
 import { useState } from "react";
 import ImageSlider from "./component/ImageSlider";
+
 // let this prouctDate come from api
 import productData from "@/productData";
 
@@ -16,20 +17,16 @@ export default function Home() {
       <div className="image-slider">
         <div className="image-container relative h-[40vh] md:h-[300px] md:w-[40vw]">
           <ImageSlider images={productData.imageURL} />
-        </div>  
+        </div>
       </div>
       <div className="second mt-0 md:mt-16">
         <section className="m-5 w-[90vw] md:w-[40vw]">
           <div className="text flex flex-col gap-3">
             <span className="text-sm text-[#8d8d90]">SNEAKER COMPANY</span>
             <span className="font-['Kumbh_Sans'] text-3xl font-bold text-[#1a1d22]">
-              Fall Limited Edition Sneakers
+              {productData.name}
             </span>
-            <p className="text-[#909192]">
-              These low-profile sneakers are your perfect casual wear companion.
-              Featuring a durable rubber outer sole, they will withstand
-              everything the weather can offer.
-            </p>
+            <p className="text-[#909192]">{productData.description}</p>
           </div>
           <div className="price-section mt-5 flex items-center justify-between md:flex-col md:items-start md:gap-2">
             <span className="price flex items-center space-x-5">

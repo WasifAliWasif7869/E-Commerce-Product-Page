@@ -2,8 +2,8 @@ export default {
   productID: 1,
   name: "Fall Limited Edition Sneakers",
   description: `These low-profile sneakers are your perfect casual wear companion.
-            Featuring a durable rubber outer sole, they will withstand everything
-            the weather can offer.`,
+              Featuring a durable rubber outer sole, they will withstand
+              everything the weather can offer.`,
   price: 125.00,
   imageURL: [
     "/image-product-1.jpg",
