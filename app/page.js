@@ -16,7 +16,7 @@ export default function Home() {
       <div className="image-slider">
         <div className="image-container relative h-[40vh] md:h-[300px] md:w-[40vw]">
           <ImageSlider images={productData.imageURL} />
-        </div>
+        </div>  
       </div>
       <div className="second mt-0 md:mt-16">
         <section className="m-5 w-[90vw] md:w-[40vw]">

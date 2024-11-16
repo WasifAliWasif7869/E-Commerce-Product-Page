@@ -2,7 +2,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -13,13 +13,32 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { removeFromCart } from "@/store/Slices/cartSlice";
+import { useRef } from "react";
 
 const Navbar = () => {
   const [product] = useSelector((state) => state.cart);
   const [showCart, setshowCart] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
-
+  const menuRef = useRef();
+  const cartRef = useRef();
   const dispatch = useDispatch();
+
+  const handleClose = (e) => {
+    if (menuRef && !menuRef.current.contains(e.target)) {
+      setShowDrawer(false);
+    }
+    if (cartRef.current && !cartRef.current.contains(e.target)) {
+      setshowCart(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClose);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClose);
+    };
+  }, []);
 
   return (
     <nav className="min-h-16 shadow-lg">
@@ -29,6 +48,7 @@ const Navbar = () => {
             className="hamburger z-50 space-y-0.5 md:hidden"
             onClick={() => {
               setShowDrawer(!showDrawer);
+              setshowCart(false);
             }}
           >
             <img
@@ -43,6 +63,7 @@ const Navbar = () => {
           </div>
           <div className="navigation md:block">
             <ul
+              ref={menuRef}
               className={`${showDrawer ? "translate-x-0" : "-translate-x-full"} absolute inset-0 top-0 z-30 flex h-screen w-[60vw] flex-col gap-2 bg-white pt-20 transition-all duration-300 md:static md:h-[10vh] md:translate-x-0 md:flex-row md:items-center md:gap-0 md:pt-0 md:text-center`}
             >
               <li className="cursor-pointer content-center border-[#fe7b1b] px-4 py-2 text-lg font-bold text-[#26272b] hover:text-[#2e2e30] md:h-full md:font-normal md:text-[#75777c] md:hover:border-b-4">
@@ -77,54 +98,56 @@ const Navbar = () => {
                 {product && product.quantity ? product.quantity : 0}
               </div>
             </div>
-            {showCart && (
-              <Card className="absolute -right-20 top-5 z-30 min-h-48 w-[90vw] pb-0 text-[#6a6d72] shadow-xl sm:right-0 sm:w-96">
-                <CardHeader className="pb-2 shadow-lg">
-                  <CardTitle className="">Cart</CardTitle>
-                </CardHeader>
-                {product ? (
-                  <div>
-                    <CardContent>
-                      <div className="product-info flex w-full items-start justify-center gap-3">
-                        <div className="image w-[20%]">
-                          <img
-                            src="/image-product-1-thumbnail.jpg"
-                            alt=""
-                            className="h-full w-full rounded-xl"
-                          />
-                        </div>
-                        <div className="title-quantity flex w-[80%] flex-col gap-1">
-                          <span className="text-sm">{product.name}</span>
-                          <span className="text-sm">
-                            ${product.price} &times; {product.quantity}{" "}
-                            <span className="font-bold">
-                              ${product.price * product.quantity}
+            <div ref={cartRef}>
+              {showCart && (
+                <Card className="absolute -right-20 top-5 z-30 min-h-56 w-[90vw] pb-0 text-[#6a6d72] shadow-xl sm:right-0 sm:w-96">
+                  <CardHeader className="pb-2 shadow-md">
+                    <CardTitle className="">Cart</CardTitle>
+                  </CardHeader>
+                  {product ? (
+                    <div>
+                      <CardContent className="pt-4">
+                        <div className="product-info flex w-full items-start justify-center gap-3">
+                          <div className="image w-[20%]">
+                            <img
+                              src="/image-product-1-thumbnail.jpg"
+                              alt=""
+                              className="h-full w-full rounded-xl"
+                            />
+                          </div>
+                          <div className="title-quantity flex w-[80%] flex-col gap-1">
+                            <span className="text-sm">{product.name}</span>
+                            <span className="text-sm">
+                              ${product.price} &times; {product.quantity}{" "}
+                              <span className="font-bold">
+                                ${product.price * product.quantity}
+                              </span>
                             </span>
+                          </div>
+                          <span
+                            className="delete w-[5%] cursor-pointer self-center"
+                            onClick={() =>
+                              dispatch(removeFromCart(product.productID))
+                            }
+                          >
+                            <img src="/icon-delete.svg" className="w-full" />
                           </span>
                         </div>
-                        <span
-                          className="delete w-[7%] cursor-pointer self-center md:w-[5%]"
-                          onClick={() =>
-                            dispatch(removeFromCart(product.productID))
-                          }
-                        >
-                          <img src="/icon-delete.svg" className="w-full" />
-                        </span>
-                      </div>
-                    </CardContent>
-                    <CardFooter>
-                      <Button className="w-full bg-[#ff7d1b] py-6 text-[#451000]">
-                        Checkout
-                      </Button>
-                    </CardFooter>
-                  </div>
-                ) : (
-                  <div className="flex h-20 items-center justify-center font-bold text-[#6a6d72]">
-                    <p>Your cart is empty.</p>
-                  </div>
-                )}
-              </Card>
-            )}
+                      </CardContent>
+                      <CardFooter>
+                        <Button className="w-full bg-[#ff7d1b] py-6 text-[#451000]">
+                          Checkout
+                        </Button>
+                      </CardFooter>
+                    </div>
+                  ) : (
+                    <div className="flex h-20 items-center justify-center font-bold text-[#6a6d72]">
+                      <p>Your cart is empty.</p>
+                    </div>
+                  )}
+                </Card>
+              )}
+            </div>
           </span>
 
           <span className="rounded-full p-0.5 hover:outline hover:outline-2 hover:outline-[#fe7b1b]">

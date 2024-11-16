@@ -24,10 +24,9 @@ const cart = createSlice({
       }
     },
     removeFromCart(state, action) {
-      console.log(action.payload);
       return state.filter((product) => {
-        return product.productID !== action.payload
-      }); 
+        return product.productID !== action.payload;
+      });
     },
   },
 });
