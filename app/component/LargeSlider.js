@@ -22,7 +22,7 @@ const LargeSlider = ({ images }) => {
       .querySelectorAll(".selected")
       .forEach((ele) => ele.classList.remove("selected"));
     e.target.classList.add("selected");
-    setcurrentImage(e.target.alt);
+    setcurrentImage(parseInt(e.target.alt));
   };
   return (
     <div className="hidden gap-4 md:flex">

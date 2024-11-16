@@ -7,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { current } from "@reduxjs/toolkit";
 import LargeSlider from "./LargeSlider";
 
 const ImageSlider = ({ images }) => {
@@ -30,6 +29,7 @@ const ImageSlider = ({ images }) => {
   return (
     <>
       <div className="relative overflow-hidden">
+        //Image Viewer
         <div
           className={`relative flex h-full w-full transition-transform duration-500`}
           style={{
@@ -41,11 +41,12 @@ const ImageSlider = ({ images }) => {
               <img
                 onClick={() => setOpenSider(true)}
                 src={url}
-                className="h-[300px] pointer-events-none md:pointer-events-auto w-full object-fill object-center md:h-[90%] md:w-[50vw] md:rounded-3xl"
+                className="pointer-events-none h-[300px] w-full object-fill object-center md:pointer-events-auto md:h-[90%] md:w-[50vw] md:rounded-3xl"
               />
             </div>
           ))}
         </div>
+        //Previous Button
         <div
           className="previous absolute left-0 top-1/2 z-10 ml-3 rounded-full bg-white/80 p-3 hover:bg-white md:hidden"
           onClick={showPrev}
@@ -79,7 +80,7 @@ const ImageSlider = ({ images }) => {
       </div>
       {openSider && (
         <>
-          <LargeSlider images={images}/>
+          <LargeSlider images={images} />
           <div
             className="absolute right-0 top-0 h-screen w-screen bg-black opacity-80"
             onClick={() => setOpenSider(false)}
